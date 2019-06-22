@@ -10,7 +10,7 @@ A bot that automatically detects selfbots and ban them
 `npm install`
 
 *  Edit the config file  
-Modify the config.js file with your informations! (token, log channel)
+Modify the `config.js` file with your informations! (token, log channel)
 
 *  Run the bot  
 `node index.js`
