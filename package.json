@@ -1,0 +1,29 @@
+{
+  "name": "autobanselfbots",
+  "version": "1.0.0",
+  "description": "A bot that automatically detects selfbots and ban them",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Androz2091/AutoBanSelfbots.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "anti",
+    "raid",
+    "selfbots"
+  ],
+  "author": "Androz2091",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Androz2091/AutoBanSelfbots/issues"
+  },
+  "homepage": "https://github.com/Androz2091/AutoBanSelfbots#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}
