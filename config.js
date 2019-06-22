@@ -12,8 +12,8 @@ module.exports = {
      * {guild} will be automatically replaced by the server name
      */
     sentences: {
-        logs: "{user} was banned from {guild} because it's a selftbot!",
-        banned: "You were banned from {guild} because we have detected that you are a selftbot!",
+        logs: "{user} was banned from {guild} because it's a selfbot!",
+        banned: "You were banned from {guild} because we have detected that you are a selfbot!",
         whitelist: "Sorry, this server is not included in the whitelist!"
     },
 
