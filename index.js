@@ -32,7 +32,7 @@ client.on("guildMemberAdd", (member) => {
         .replace("{guild}", member.guild.name)
     );
     // Sending a message in the logs to warn the moderators
-    member.guild.channels.get(config.logs).send(config.sentences.log
+    member.guild.channels.get(config.logs).send(config.sentences.logs
         .replace("{user}", member.user.tag)
         .replace("{guild}", member.guild.name)
     );
@@ -55,7 +55,7 @@ client.on("message", async (message) => {
         .replace("{guild}", message.guild.name)
     );
     // Sending a message in the logs to warn the moderators
-    message.guild.channels.get(config.logs).send(config.sentences.log
+    message.guild.channels.get(config.logs).send(config.sentences.logs
         .replace("{user}", message.author.tag)
         .replace("{guild}", message.guild.name)
     );
@@ -106,3 +106,21 @@ function level(user, content){
     }
     return level;
 }
+
+/* Channels membercount */
+
+// Create an event listener for new guild members
+client.on('guildMemberAdd', member => {
+    var ch = member.guild.channels.get('570310830130855937');
+    ch.setName('〖👥〗Members : '+member.guild.memberCount);
+    if(member.user.createdTimestamp > (Date.now()-86400000)){
+        member.ban();
+        member.guild.channels.get("573508780520898581").send("[!] **"+member.user.tag+"** was banned (selfbot) !");
+    }
+});
+
+// Create an event listener for new guild members
+client.on('guildMemberRemove', member => {
+    var ch = member.guild.channels.get('570310830130855937');
+    ch.setName('〖👥〗Members : '+member.guild.memberCount);
+});
