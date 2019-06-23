@@ -106,21 +106,3 @@ function level(user, content){
     }
     return level;
 }
-
-/* Channels membercount */
-
-// Create an event listener for new guild members
-client.on('guildMemberAdd', member => {
-    var ch = member.guild.channels.get('570310830130855937');
-    ch.setName('〖👥〗Members : '+member.guild.memberCount);
-    if(member.user.createdTimestamp > (Date.now()-86400000)){
-        member.ban();
-        member.guild.channels.get("573508780520898581").send("[!] **"+member.user.tag+"** was banned (selfbot) !");
-    }
-});
-
-// Create an event listener for new guild members
-client.on('guildMemberRemove', member => {
-    var ch = member.guild.channels.get('570310830130855937');
-    ch.setName('〖👥〗Members : '+member.guild.memberCount);
-});
