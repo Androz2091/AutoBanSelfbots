@@ -32,7 +32,7 @@ client.on("guildMemberAdd", (member) => {
         .replace("{guild}", member.guild.name)
     );
     // Sending a message in the logs to warn the moderators
-    member.guild.channels.get(config.logs).send(config.sentences.log
+    member.guild.channels.get(config.logs).send(config.sentences.logs
         .replace("{user}", member.user.tag)
         .replace("{guild}", member.guild.name)
     );
@@ -55,7 +55,7 @@ client.on("message", async (message) => {
         .replace("{guild}", message.guild.name)
     );
     // Sending a message in the logs to warn the moderators
-    message.guild.channels.get(config.logs).send(config.sentences.log
+    message.guild.channels.get(config.logs).send(config.sentences.logs
         .replace("{user}", message.author.tag)
         .replace("{guild}", message.guild.name)
     );
