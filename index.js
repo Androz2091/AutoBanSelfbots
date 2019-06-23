@@ -48,6 +48,8 @@ client.on("message", async (message) => {
     console.log(chalk.blue("["+userLevel+"] ")+chalk.green(message.author.tag));
     // If the level is lower than 4, the user is not a selfbot
     if(userLevel < 4) return;
+    // Delete the message
+    message.delete();
     // Else, sends a message to warn him
     message.author.send(config.sentences.banned
         .replace("{guild}", message.guild.name)
