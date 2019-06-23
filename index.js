@@ -23,7 +23,7 @@ client.on("ready", async () => {
 // Create an event listener for new guild members
 client.on("guildMemberAdd", (member) => {
     // Gets the user level
-    let userLevel = level(member.user, false);
+    let userLevel = level(member.user, false, false);
     console.log(chalk.blue("["+userLevel+"] ")+chalk.green(member.user.tag));
     // If the level is lower than 2, the user is not a selfbot
     if(userLevel < 2) return;
@@ -44,7 +44,7 @@ client.on("guildMemberAdd", (member) => {
 // Create an event listener for new messages
 client.on("message", async (message) => {
     // Gets the user and message level
-    let userLevel = level(message.author, message.content);
+    let userLevel = level(message.author, message.content, message.nonce);
     console.log(chalk.blue("["+userLevel+"] ")+chalk.green(message.author.tag));
     // If the level is lower than 4, the user is not a selfbot
     if(userLevel < 4) return;
@@ -87,8 +87,9 @@ client.login(config.token);
  * Check a user and a message to get a level of dangerousness
  * @param {object} user The user object to check
  * @param {string} content The message content to check (optional)
+ * @param {string} nonce The message signature (optional)
  */
-function level(user, content){
+function level(user, content, nonce){
     let level = 0;
     // Check the username
     let username = /^[a-z]+[0-9]+$/;
@@ -104,5 +105,10 @@ function level(user, content){
         if(content.includes("https://")) level++;
         if(content.includes("hotos")) level = level+2;
     }
+    // Check if the user is on mobile (some users on mobile devices don't send a signature)
+    let devices = user.presence.clientStatus, isMobile = false;
+    if(devices) for(let device in user.presence.clientStatus) if(device === "mobile") isMobile = true;
+    // Check the message signature
+    if(typeof nonce === "object" && !isMobile) level++
     return level;
 }
