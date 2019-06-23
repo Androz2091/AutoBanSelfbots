@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Androz2091/AutoBanSelfbots#readme",
   "dependencies": {
+    "chalk": "^2.4.2",
     "discord.js": "^11.5.1"
   }
 }

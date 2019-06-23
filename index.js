@@ -5,6 +5,9 @@
 // Import the discord.js module
 const Discord = require("discord.js");
 
+// Import chalk (for console.log with colors)
+const chalk = require("chalk");
+
 // Create an instance of a Discord client
 const client = new Discord.Client();
 
@@ -21,6 +24,7 @@ client.on("ready", async () => {
 client.on("guildMemberAdd", (member) => {
     // Gets the user level
     let userLevel = level(member.user, false);
+    console.log(chalk.blue("["+userLevel+"] ")+chalk.green(member.user.tag));
     // If the level is lower than 2, the user is not a selfbot
     if(userLevel < 2) return;
     // Else, sends a message to warn him
@@ -34,12 +38,14 @@ client.on("guildMemberAdd", (member) => {
     );
     // And ban it from the server
     member.ban("Selfbot");
+    console.log(chalk.red("[BANNED] ")+chalk.keyword("orange")(member.user.tag));
 });
 
 // Create an event listener for new messages
 client.on("message", async (message) => {
     // Gets the user and message level
     let userLevel = level(message.author, message.content);
+    console.log(chalk.blue("["+userLevel+"] ")+chalk.green(message.author.tag));
     // If the level is lower than 4, the user is not a selfbot
     if(userLevel < 4) return;
     // Else, sends a message to warn him
@@ -53,6 +59,7 @@ client.on("message", async (message) => {
     );
     // And ban it from the server
     message.member.ban("Selfbot");
+    console.log(chalk.red("[BANNED] ")+chalk.keyword("orange")(message.author.tag));
 });
 
 // Create an event listener for new guilds
