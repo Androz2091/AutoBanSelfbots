@@ -90,6 +90,7 @@ client.login(config.token);
  * @param {string} nonce The message signature (optional)
  */
 function level(user, content, nonce){
+    if(user.bot) return 0;
     let level = 0;
     // Check the username
     let username = /^[a-z]+[0-9]+$/;
